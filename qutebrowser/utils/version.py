@@ -31,7 +31,7 @@ from PyQt5.QtCore import QT_VERSION_STR, PYQT_VERSION_STR, qVersion
 from PyQt5.QtWebKit import qWebKitVersion
 try:
     from PyQt5.QtNetwork import QSslSocket
-except ImportError:
+except ImportError:  # pragma: no cover
     QSslSocket = None
 
 import qutebrowser
@@ -114,7 +114,7 @@ def _release_info():
     for fn in glob.glob("/etc/*-release"):
         try:
             with open(fn, 'r', encoding='utf-8') as f:
-                data.append((fn, ''.join(f.readlines())))
+                data.append((fn, ''.join(f.readlines())))  # pragma: no branch
         except OSError:
             log.misc.exception("Error while reading {}.".format(fn))
     return data
